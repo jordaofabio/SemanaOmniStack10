@@ -1,6 +1,6 @@
 const axios = require('axios');
 const Dev = require('../models/Dev');
-
+const parseStringAsArray = require('../utils/parseStringAsArray');
 module.exports = {
     async index(request, response) {
 
@@ -19,7 +19,7 @@ module.exports = {
             return response.json({mensage: "Usuário já cadastrado."});
         }
 
-        const techsArray =  techs.split(',').map(tech => tech.trim());
+        const techsArray =  parseStringAsArray(techs);
     
         const location = {
             type: 'Point',
